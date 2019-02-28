@@ -1,0 +1,24 @@
+.noProduct{
+  text-align:center;
+}
+
+.searchBox{
+  padding-bottom:30px;
+  padding-left:3px;
+  width:50%;
+  margin:auto;
+}
+
+table{
+
+}
+
+th{
+  background-color:#f59c73;
+  border:1px solid #c2c1c0;
+}
+
+td{
+  background-color:#f3e5de;
+  border:1px solid #c2c1c0
+}

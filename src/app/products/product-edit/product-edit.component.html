@@ -1,0 +1,40 @@
+<div class="container-fluid proEditForm">
+<form #productEditForm="ngForm" (ngSubmit)="onProdFormSubmit(productEditForm)">
+  <div class="row">
+    <div class="col-4">
+        <div class="form-group">
+                <input type="text" name="prodName" prodName ngModel #prodName="ngModel" placeholder="Product Name *" class="form-control" required>
+                <span class="helpblock" *ngIf="prodName.touched && !prodName.valid">Please Enter a Valid Product Name</span>
+        </div>
+      </div>
+      <div class="col-3">
+          <div class="form-group">
+                  <input type="number" name="prodPrice" prodPrice ngModel #prodPrice="ngModel" step="0.01" placeholder="Product Price (in $) *" class="form-control" required>
+                  <span class="helpblock" *ngIf="prodPrice.touched && !prodPrice.valid">Please Enter a Valid Product Price</span>
+          </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                    <input type="text" name="prodColor" placeholder="Product Color *" prodColor ngModel #prodColor="ngModel" class="form-control" required>
+                    <span class="helpblock" *ngIf="prodColor.touched && !prodColor.valid">Please Enter a Valid Product Color</span>
+                  </div>
+          </div>
+          <div class="col-1">
+              <div class="form-group">
+                  <button type="submit" class="btn btn-outline-primary btn-block" [disabled]="!productEditForm.valid">
+                      <i class="fa fa-plus"></i> Save
+                  </button>
+
+              </div>
+            </div>
+            <div class="col-1">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default btn-block" (click)="OnCancelClicked()">
+                        <i class="fa fa-plus"></i> Cancel
+                    </button>
+
+                </div>
+              </div>
+    </div>
+   </form>
+</div>

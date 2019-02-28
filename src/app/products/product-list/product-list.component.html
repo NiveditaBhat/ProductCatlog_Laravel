@@ -1,0 +1,30 @@
+<div class="d-flex flex-column justify-content-center">
+<div class="searchBox">
+    <app-search  [list]="productList" (filteredListEmitter)="onListFiltered($event)" ></app-search>
+  </div>
+  <div>
+<table class="table table-bordered table-striped" *ngIf="productList.length> 0  ; else noProduct">
+  <thead>
+  <tr>
+   <th>Name</th>
+  <th>Price (in $)</th>
+  <th>Color</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of filteredProdList" (dblclick)="OnProductDbClicked($event)">
+  <td>{{ product.name }}</td>
+  <td>{{ product.price }}</td>
+  <td>{{ product.color }}</td>
+  </tr>
+  <tr *ngIf="filteredProdList.length == 0">
+    <td colspan="3">No Products to Display</td>
+    </tr>
+  </tbody>
+  </table>
+  <ng-template #noProduct>
+
+  <h5 class="noProduct">  No Products to display</h5>
+    </ng-template>
+  </div>
+  </div>
