@@ -10,15 +10,18 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $middleware = [
+		//'\Barryvdh\Cors\HandleCors',
 		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
 		'Illuminate\Cookie\Middleware\EncryptCookies',
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'App\Http\Middleware\VerifyCsrfToken',
-		'\Barryvdh\Cors\HandleCors'
+		'App\Http\Middleware\VerifyCsrfToken'
+		
 		
 	];
+
+	
 
 	/**
 	 * The application's route middleware.
@@ -28,8 +31,10 @@ class Kernel extends HttpKernel {
 	protected $routeMiddleware = [
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
-		'cors' => '\App\Http\Middleware\Cors'
+		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated'
+		
 	];
+
+
 
 }

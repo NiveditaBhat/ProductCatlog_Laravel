@@ -12,13 +12,18 @@ use App\Http\Middleware\Cors;
 |
 */
 
-Route::get('/api/product','ProductController@index');
+
+Route::get('/api/product',['middleware' => 'cors','uses'=>'ProductController@index']);
 
 
-Route::post('/api/product', 'ProductController@store');
-//Route::match(['post', 'options'], '/api/product', 'ProductController@store')->middleware('cors');
-//Route::post('/api/product', 'ProductController@store');
-//Route::post('/api/product', 'ProductController@store');
+Route::post('/api/product','ProductController@store');
 
-//Route::post('/api/product', 'ProductController@store');
-//Route::get('/product','ProductController@create');
+Route::put('/api/product/{id}', 'ProductController@update');
+
+
+Route::get('/',function (Request $request) {
+    return view('productEdit');
+});
+
+Route::post('/api/productInternal','ProductController@store');
+

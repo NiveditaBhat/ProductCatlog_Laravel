@@ -6,5 +6,5 @@ class ExpiviProduct extends Model {
 
 	//
 	protected $table = 'expiviProducts';
-//	protected $fillable = ['name','price','color'];
+	protected $fillable = ['name','price','color'];
 }

@@ -14,9 +14,7 @@ class ProductController extends Controller {
 	 */
 	public function index()
 	{
-		
-			$productList = \App\ExpiviProduct::orderBy('created_at', 'asc')->get();
-		
+			$productList = \App\ExpiviProduct::orderBy('created_at', 'asc')->get();	
 			return response()->json(['product'=>$productList, 'message'=>'Product Fetched Successfully']);
 		
 	}
@@ -36,21 +34,14 @@ class ProductController extends Controller {
 	public function store(Request $request)
 	{
 
-	/*	$this->validate($request,[
+	$this->validate($request,[
 			'name' => 'required',
 			'price' => 'required',
 			'color' => 'required'
 		]);
 		
-		//$createdproduct =  \App\ExpiviProduct::create($request->all());     
-		//return response()->json($createdproduct, 201);		
-		$product = new \App\ExpiviProduct;
-			$product->name = $request->get('name');
-			$product->price = $request->get('price');
-			$product->color = $request->get('color');
-			$product->save();
-*/
-			return response()->json(['message'=>'Product Saved Successfully']);
+	  	$product =  \App\ExpiviProduct::create($request->all());   
+			return response()->json(['product'=>$product,'message'=>'Product Saved Successfully']);
 		
 		}
 
@@ -84,9 +75,11 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request,$id)
 	{
-		//
+		$product =  \App\ExpiviProduct::findorFail($id);
+		$product->update($request->all());
+		return  response()->json(['message'=>'Product Updated Successfully']);
 	}
 
 	/**
