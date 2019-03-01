@@ -33,7 +33,7 @@ console.log(error);
 }
 
 updateProduct(product) {
-  this.http.put<{message: string, updatedProd:any}>(this.backendUrl + 'api/product'+ product.id, product).subscribe(responseData => {
+  this.http.put<{message: string, updatedProd:any}>(this.backendUrl + 'api/product/'+ product.id, product).subscribe(responseData => {
     console.log(responseData);
     this.router.navigate(['/']);
 
@@ -63,7 +63,7 @@ getProductsChangedListener() {
 getProduct(id){
   return this.productList.filter(function(item) {
     return item.id == id;
-  });
+  }).slice();
 }
 
 }

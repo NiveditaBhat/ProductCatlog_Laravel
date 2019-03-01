@@ -14,7 +14,7 @@ import { Product } from '../product.model';
 })
 export class ProductEditComponent implements OnInit {
 @ViewChild('productEditForm') prodEditForm:any;
-editableProd:Product;
+editableProd = {'id': '' ,'name':'','price':0,'color':''};
 editMode:Boolean = false;
 cancelClicked: Boolean = false;
   constructor(private productService: ProductService, private router:Router, private activeRoute: ActivatedRoute,
@@ -25,7 +25,10 @@ cancelClicked: Boolean = false;
       this.editMode = true;
 const prodId = params['id'];
 const prod = this.productService.getProduct(prodId);
-this.editableProd = prod[0];
+this.editableProd.name = prod[0].name;
+this.editableProd.color = prod[0].color;
+this.editableProd.price = prod[0].price;
+this.editableProd.id = prod[0].id;
     });
   }
 
@@ -39,8 +42,6 @@ this.editableProd = prod[0];
 }
 
   onProdFormSubmit(form: NgForm) {
-  /*  const newProduct = {'name': form.form.value.prodName, 'price': form.form.value.prodPrice, 'color': form.form.value.prodColor};
-this.productService.addProduct(newProduct);*/
 const product = new Product(this.editableProd.id, this.editableProd.name,this.editableProd.price, this.editableProd.color);
 this.productService.updateProduct(product);
   }

@@ -7,7 +7,7 @@ import { CanDeactivateGuard } from './products/can-deactivate-guard.service';
 
 const route: Routes = [
   {path: '', component: ProductsComponent, children: [
-    {path: 'productList', component: ProductListComponent},
+    {path: 'productList', component: ProductListComponent,outlet: 'prodList'},
     {path: 'product/new', component: ProductEditComponent},
     {path: 'product/:id', component: ProductEditComponent, canDeactivate: [CanDeactivateGuard]}
   ]}
