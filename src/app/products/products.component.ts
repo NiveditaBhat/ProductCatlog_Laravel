@@ -8,14 +8,18 @@ import { ProductService } from './product.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-addProdClicked: Boolean =  false;
+editProdClicked: Boolean =  false;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  onEditClicked(){
+    this.editProdClicked = true;
+  }
+
   onAddProductClicked() {
-    this.addProdClicked = true;
+    this.editProdClicked = true;
 this.router.navigate(['/product/new']);
   }
 }

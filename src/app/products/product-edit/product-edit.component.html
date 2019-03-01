@@ -3,19 +3,19 @@
   <div class="row">
     <div class="col-4">
         <div class="form-group">
-                <input type="text" name="prodName" prodName ngModel #prodName="ngModel" placeholder="Product Name *" class="form-control" required>
+                <input type="text" name="prodName" prodName ngModel #prodName="ngModel"  [(ngModel)]="editableProd.name" placeholder="Product Name *" class="form-control" required>
                 <span class="helpblock" *ngIf="prodName.touched && !prodName.valid">Please Enter a Valid Product Name</span>
         </div>
       </div>
       <div class="col-3">
           <div class="form-group">
-                  <input type="number" name="prodPrice" prodPrice ngModel #prodPrice="ngModel" step="0.01" placeholder="Product Price (in $) *" class="form-control" required>
+                  <input type="number" name="prodPrice" prodPrice ngModel #prodPrice="ngModel" [(ngModel)]="editableProd.price" step="0.01" placeholder="Product Price (in $) *" class="form-control" required>
                   <span class="helpblock" *ngIf="prodPrice.touched && !prodPrice.valid">Please Enter a Valid Product Price</span>
           </div>
         </div>
         <div class="col-3">
             <div class="form-group">
-                    <input type="text" name="prodColor" placeholder="Product Color *" prodColor ngModel #prodColor="ngModel" class="form-control" required>
+                    <input type="text" name="prodColor" placeholder="Product Color *" prodColor ngModel #prodColor="ngModel" [(ngModel)]="editableProd.color" class="form-control" required>
                     <span class="helpblock" *ngIf="prodColor.touched && !prodColor.valid">Please Enter a Valid Product Color</span>
                   </div>
           </div>
@@ -37,4 +37,7 @@
               </div>
     </div>
    </form>
+</div>
+<div>
+  <hr class="flex-fill hrCstm">
 </div>

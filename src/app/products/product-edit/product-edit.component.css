@@ -11,3 +11,7 @@
   font-weight:bold;
  padding:8px;
 }
+
+.hrCstm {
+  border-top:1px solid #f59c73;
+}

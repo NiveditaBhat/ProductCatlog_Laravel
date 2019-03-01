@@ -1,13 +1,11 @@
 <div class="d-flex flex-column justify-content-center">
-  <div class="flex-fill cstmFlexChild" *ngIf="addProdClicked">
+  <div class="flex-fill cstmFlexChild">
     <router-outlet></router-outlet>
     </div>
-  <div class="flex-fill cstmFlexChild">
-    <button type="button" class="btn btn-primary cstmBtn1" (click)="onAddProductClicked($event)" [disabled]="addProdClicked"><span class="PlusSign">Add Product</span></button>
-  </div>
-  <div>
-    <hr class="flex-fill hrCstm">
-  </div>
+  <!--<div class="flex-fill cstmFlexChild">
+    <button type="button" class="btn btn-primary cstmBtn1" (click)="onAddProductClicked($event)" [disabled]="addProdClicked">Edit Product</button>
+  </div>-->
+
   <div class="flex-fill cstmFlexChild">
     <app-product-list></app-product-list>
   </div>

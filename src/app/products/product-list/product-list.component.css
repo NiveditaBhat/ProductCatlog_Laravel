@@ -3,14 +3,15 @@
 }
 
 .searchBox{
-  padding-bottom:30px;
-  padding-left:3px;
+
+
   width:50%;
   margin:auto;
 }
 
 table{
-
+width:80%;
+margin:auto;
 }
 
 th{
@@ -20,5 +21,18 @@ th{
 
 td{
   background-color:#f3e5de;
-  border:1px solid #c2c1c0
+  border:1px solid #c2c1c0;
+}
+
+.editBtn{
+  background-color:transparent;
+  border:none;
+}
+
+.tdVisible {
+  visibility: visible;
+}
+
+.tdHidden {
+  visibility: none;
 }

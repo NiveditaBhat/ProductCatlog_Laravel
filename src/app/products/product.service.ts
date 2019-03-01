@@ -23,13 +23,24 @@ getProductArray(){
 addProduct(newProduct) {
 const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
 const options = { headers: headers };
-  this.http.post<{message: string, product:any}>(this.backendUrl + 'api/product', newProduct).subscribe(responseData => {
+  this.http.post<{message: string, newProduct:any}>(this.backendUrl + 'api/product', newProduct).subscribe(responseData => {
     console.log(responseData);
     this.router.navigate(['/']);
 
     }, error => {
 console.log(error);
     });
+}
+
+updateProduct(product) {
+  this.http.put<{message: string, updatedProd:any}>(this.backendUrl + 'api/product'+ product.id, product).subscribe(responseData => {
+    console.log(responseData);
+    this.router.navigate(['/']);
+
+    }, error => {
+console.log(error);
+    });
+
 }
 
 getProducts(){
@@ -49,5 +60,10 @@ getProductsChangedListener() {
   return this.productsChanged.asObservable();
  }
 
+getProduct(id){
+  return this.productList.filter(function(item) {
+    return item.id == id;
+  });
+}
 
 }

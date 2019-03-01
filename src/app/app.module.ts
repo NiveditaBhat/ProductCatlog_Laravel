@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import { ProductService } from './products/product.service';
 import {HttpClientModule} from '@angular/common/http';
 import { SearchComponent } from './shared/search/search.component';
+import { CanDeactivateGuard } from './products/can-deactivate-guard.service';
+import { ModalService } from './shared/modal.service';
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { SearchComponent } from './shared/search/search.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, CanDeactivateGuard,ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,17 @@
 <div class="d-flex flex-column justify-content-center">
-<div class="searchBox">
-    <app-search  [list]="productList" (filteredListEmitter)="onListFiltered($event)" ></app-search>
-  </div>
+
   <div>
-<table class="table table-bordered table-striped" *ngIf="productList.length> 0  ; else noProduct">
+<table class="table" *ngIf="productList.length> 0  ; else noProduct">
   <thead>
+    <tr>
+      <td colspan="3">
+        <div class="searchBox">
+
+
+        <app-search  [list]="productList" (filteredListEmitter)="onListFiltered($event)" *ngIf="productList.length> 0"></app-search>
+      </div>
+      </td>
+      </tr>
   <tr>
    <th>Name</th>
   <th>Price (in $)</th>
@@ -12,11 +19,15 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of filteredProdList" (dblclick)="OnProductDbClicked($event)">
-  <td>{{ product.name }}</td>
-  <td>{{ product.price }}</td>
-  <td>{{ product.color }}</td>
-  </tr>
+  <tr *ngFor="let product of filteredProdList">
+
+  <td (dblclick)="OnProdDblClicked(product.id)">{{ product.name }}</td>
+  <td (dblclick)="OnProdDblClicked(product.id)">{{ product.price }}</td>
+  <td (dblclick)="OnProdDblClicked(product.id)">{{ product.color }}</td>
+  <td id="product.id" class="editBtn" *ngIf="EditVisibility === product.id &&!editClicked"><button type="button" class="btn btn-outline-primary" (click)="onProdEdit(product)">Edit</button></td>
+ <!-- <td class="w-5 editBtn"><button type="button" class="btn btn-outline-default">Cancel</button></td>-->
+
+</tr>
   <tr *ngIf="filteredProdList.length == 0">
     <td colspan="3">No Products to Display</td>
     </tr>
