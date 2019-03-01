@@ -22,9 +22,7 @@
   <td (dblclick)="OnProdDblClicked(product.id)">{{ product.name }}</td>
   <td (dblclick)="OnProdDblClicked(product.id)">{{ product.price }}</td>
   <td (dblclick)="OnProdDblClicked(product.id)">{{ product.color }}</td>
-  <td id="product.id" class="editBtn" *ngIf="EditVisibility === product.id &&!editClicked"><button type="button" class="btn btn-outline-primary" (click)="onProdEdit(product)">Edit</button></td>
- <!-- <td class="w-5 editBtn"><button type="button" class="btn btn-outline-default">Cancel</button></td>-->
-
+  <td class="editBtn" ><button type="button" class="btn btn-outline-primary" (click)="onProdEdit(product)" [style.visibility]="(EditVisibility === product.id &&!editClicked) ? 'visible' : 'hidden'">Edit</button></td>
 </tr>
   <tr *ngIf="filteredProdList.length == 0">
     <td colspan="3">No Products to Display</td>

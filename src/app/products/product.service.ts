@@ -8,8 +8,10 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class ProductService {
+
 private productList: Product[];
 private backendUrl = 'http://localhost:8000/';
+
 private productsChanged = new Subject<{products: Product[]}>();
   constructor(private http: HttpClient, private router: Router){
 
@@ -44,7 +46,7 @@ console.log(error);
 }
 
 getProducts(){
- return this.http.get<{message: string, product}>(this.backendUrl + 'api/product')
+ return this.http.get<{message: string, product: any}>(this.backendUrl + 'api/product')
  .subscribe((response) => {
    this.productList = [];
   response.product.forEach((obj,i) => {

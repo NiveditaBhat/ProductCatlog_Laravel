@@ -13,40 +13,39 @@ import { Product } from '../product.model';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-@ViewChild('productEditForm') prodEditForm:any;
-editableProd = {'id': '' ,'name':'','price':0,'color':''};
-editMode:Boolean = false;
-cancelClicked: Boolean = false;
-  constructor(private productService: ProductService, private router:Router, private activeRoute: ActivatedRoute,
+  @ViewChild('productEditForm') prodEditForm: any;
+  editableProd = { 'id': '', 'name': '', 'price': 0, 'color': '' };
+  editMode: Boolean = false;
+  cancelClicked: Boolean = false;
+
+  constructor(private productService: ProductService, private router: Router, private activeRoute: ActivatedRoute,
     private modalService: ModalService) { }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe((params)=>{
+    this.activeRoute.params.subscribe((params) => {
       this.editMode = true;
-const prodId = params['id'];
-const prod = this.productService.getProduct(prodId);
-this.editableProd.name = prod[0].name;
-this.editableProd.color = prod[0].color;
-this.editableProd.price = prod[0].price;
-this.editableProd.id = prod[0].id;
+      const prodId = params['id'];
+      const prod = this.productService.getProduct(prodId);
+      this.editableProd.name = prod[0].name;
+      this.editableProd.color = prod[0].color;
+      this.editableProd.price = prod[0].price;
+      this.editableProd.id = prod[0].id;
     });
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-
     if (this.cancelClicked && this.prodEditForm.dirty) {
-
-        return this.modalService.confirm('Discard Changes for Product Edit ?');
+      return this.modalService.confirm('Discard Changes for Product Edit ?');
     }
     return true;
-}
-
-  onProdFormSubmit(form: NgForm) {
-const product = new Product(this.editableProd.id, this.editableProd.name,this.editableProd.price, this.editableProd.color);
-this.productService.updateProduct(product);
   }
 
-  OnCancelClicked(){
+  onProdFormSubmit(form: NgForm) {
+    const product = new Product(this.editableProd.id, this.editableProd.name, this.editableProd.price, this.editableProd.color);
+    this.productService.updateProduct(product);
+  }
+
+  OnCancelClicked() {
     this.cancelClicked = true;
     this.router.navigate(['/']);
   }

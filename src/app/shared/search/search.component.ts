@@ -28,20 +28,13 @@ export class SearchComponent implements OnInit {
   }
 
   filterProdproductList(searchString: string) {
-  /*  if (searchString == null) {
-      return this.list;
-    }
-
-    return this.list.filter(function(item){
-      return item.name.toLowerCase().indexOf(searchString.toLowerCase()) > -1 ||
-      item.color.toLowerCase().indexOf(searchString.toLowerCase()) > -1 ||
-      item.price.toString().toLowerCase().indexOf(searchString.toLowerCase()) > -1;
-    });*/
     if (searchString) {
       return this.list.filter(item => {
           const filter = Object.keys(item);
           return filter.some(
-              key => item[key].toString().toLowerCase().indexOf(searchString.toLowerCase()) !== -1
+              key => {
+              return key !== 'id' && item[key].toString().toLowerCase().indexOf(searchString.toLowerCase()) !== -1
+              }
           );
       });
   }

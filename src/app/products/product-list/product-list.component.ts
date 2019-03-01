@@ -26,13 +26,15 @@ this.filteredProdList = this.productList;
   }
 
   OnProdDblClicked(id) {
-  this.editClicked = false;
+    if(this.editClicked){
+      this.editClicked = false;
+    }
 this.EditVisibility = id;
   }
 
   onProdEdit(product){
     this.editClicked = true;
-    this.router.navigate(['/product', product.id]);
+    this.router.navigate([{outlets:{editProd:['product', product.id]}}]);
   }
 
   onListFiltered(filteredList) {
