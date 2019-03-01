@@ -52,7 +52,7 @@ border-radius:10px;
 <h3>Expivi Product Catalog</h3>
 </div>
 <div class="card-body">
-@yield('content')
+
 </div>
 </div>
 

@@ -21,9 +21,4 @@ Route::post('/api/product','ProductController@store');
 Route::put('/api/product/{id}', 'ProductController@update');
 
 
-Route::get('/',function (Request $request) {
-    return view('productEdit');
-});
-
-Route::post('/api/productInternal','ProductController@store');
 
